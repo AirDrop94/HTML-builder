@@ -8,8 +8,8 @@ const filePath = path.join(__dirname, 'output.txt');
 const writeStream = fs.createWriteStream(filePath, { flags: 'a' });
 
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
 
@@ -17,16 +17,16 @@ console.log('Welcome! Please enter text. Type "exit" or press Ctrl+C to quit.');
 
 rl.on('line', (input) => {
     if (input.trim().toLowerCase() === 'exit') {
-        console.log('Goodbye! See you next time.');
-        rl.close();
+      console.log('Goodbye! See you next time.');
+      rl.close();
     } else {
-        writeStream.write(input + '\n');
-        console.log('Text saved! Enter more text or type "exit" to finish.');
+      writeStream.write(input + '\n');
+      console.log('Text saved! Enter more text or type "exit" to finish.');
     }
 });
 
 rl.on('close', () => {
-    console.log('Goodbye! Have a great day.');
-    writeStream.end();
-    process.exit(0);
+  console.log('Goodbye! Have a great day.');
+  writeStream.end();
+  process.exit(0);
 });
